@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "setup_date": "2026-06-05",
+  "commerce_configured": true,
+  "universal_editor_enabled": true,
+  "endpoints": {
+    "commerce": "https://na1-sandbox.api.commerce.adobe.com/8wwnfNtzJbvZFQ9R7gHLd8/graphql",
+    "verification": "https://1326441-anikeshheadless-stage.adobeio-static.net/api/v1/web/anikesh-headless-app"
+  }
+}
