@@ -1,0 +1,10 @@
+{
+  "host": "aem-accs-boilerplate--anikeshwebkul.aem.live",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Library",
+      "url": "/tools/sidekick/library.html"
+    }
+  ]
+}
