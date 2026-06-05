@@ -1,0 +1,73 @@
+.cv-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+}
+
+.cv-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.cv-badge.cv-verified {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.cv-badge.cv-rejected {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+.cv-badge.cv-pending,
+.cv-badge.cv-awaiting_approval,
+.cv-badge.cv-awaiting_otp {
+  background: #fef7e0;
+  color: #b06000;
+}
+
+.cv-badge.cv-unverified {
+  background: #f1f3f4;
+  color: #5f6368;
+}
+
+.cv-otp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.cv-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cv-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #1473e6;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cv-btn:hover {
+  background: #0d66d0;
+}
+
+.cv-msg {
+  font-size: 0.9rem;
+  color: #5f6368;
+  margin: 0;
+}
+
+.cv-reason {
+  color: #c5221f;
+  margin: 0;
+}

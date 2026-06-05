@@ -1,0 +1,415 @@
+/* add global styles that can be loaded post LCP here */
+
+/* ============================================================
+   Customer Verification — "secure verification" UI
+   Used on registration, My Account, checkout, hub + PDP gate.
+   NOTE: the storefront uses a 10px rem base (html { font-size: 62.5% }),
+   so 1.6rem = 16px. Sizes below are tuned for that base.
+   ============================================================ */
+
+/* stylelint-disable no-descending-specificity */
+
+.cv-card {
+  --cv-accent: var(--color-neutral-700, #666);
+  --cv-accent-bg: var(--color-neutral-200, #f5f5f5);
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 56rem;
+  margin: 2.8rem 0;
+  padding: 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  font-family: var(--type-base-font-family, adobe-clean, system-ui, sans-serif);
+  background: var(--color-neutral-50, #fff);
+  border: 1px solid var(--color-neutral-300, #e8e8e8);
+  border-radius: 1.8rem;
+  box-shadow: 0 0.1rem 0.2rem rgb(20 20 20 / 4%), 0 2.4rem 4.8rem -2.8rem rgb(20 20 20 / 24%);
+  animation: cv-rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes cv-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cv-card--approved {
+  --cv-accent: var(--color-positive-800, #53824c);
+  --cv-accent-bg: var(--color-positive-200, #eff5ef);
+}
+
+.cv-card--pending {
+  --cv-accent: var(--color-warning-800, #cc7a2e);
+  --cv-accent-bg: var(--color-warning-200, #fdf3e9);
+}
+
+.cv-card--rejected,
+.cv-card--required {
+  --cv-accent: var(--color-alert-800, #c35050);
+  --cv-accent-bg: var(--color-alert-200, #ffebeb);
+}
+
+.cv-card--unverified {
+  --cv-accent: var(--color-neutral-700, #666);
+  --cv-accent-bg: var(--color-neutral-200, #f5f5f5);
+}
+
+.cv-card__head {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.cv-card__badge {
+  flex: 0 0 auto;
+  width: 5.6rem;
+  height: 5.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 1.6rem;
+  background: var(--cv-accent-bg);
+  color: var(--cv-accent);
+}
+
+.cv-card__badge svg {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: block;
+}
+
+.cv-ico svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: block;
+}
+
+.cv-card__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.cv-card__title {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-neutral-900, #292929);
+}
+
+.cv-pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 1.3rem;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--cv-accent-bg);
+  color: var(--cv-accent);
+}
+
+.cv-pill::before {
+  content: '';
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: currentcolor;
+}
+
+.cv-card__desc {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--color-neutral-700, #666);
+}
+
+.cv-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  font-size: 1.45rem;
+  line-height: 1.5;
+  font-weight: 500;
+  background: var(--cv-accent-bg);
+  color: var(--cv-accent);
+}
+
+.cv-banner .cv-ico {
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+}
+
+.cv-banner--approved {
+  --cv-accent: var(--color-positive-800, #53824c);
+  --cv-accent-bg: var(--color-positive-200, #eff5ef);
+}
+
+.cv-banner--pending {
+  --cv-accent: var(--color-warning-800, #cc7a2e);
+  --cv-accent-bg: var(--color-warning-200, #fdf3e9);
+}
+
+.cv-banner--rejected {
+  --cv-accent: var(--color-alert-800, #c35050);
+  --cv-accent-bg: var(--color-alert-200, #ffebeb);
+}
+
+.cv-banner--unverified {
+  --cv-accent: var(--color-neutral-800, #3d3d3d);
+  --cv-accent-bg: var(--color-neutral-200, #f5f5f5);
+}
+
+/* Drag & drop upload zone */
+.cv-dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 3.4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  border: 0.2rem dashed var(--color-neutral-400, #d6d6d6);
+  border-radius: 1.6rem;
+  background: var(--color-neutral-100, #fafafa);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.cv-dropzone:hover {
+  border-color: var(--color-brand-500, #454545);
+  background: var(--color-neutral-200, #f5f5f5);
+}
+
+.cv-dropzone.is-drag {
+  border-color: var(--color-brand-700, #2b2b2b);
+  background: var(--color-neutral-200, #f5f5f5);
+  transform: scale(1.01);
+}
+
+.cv-dropzone.is-filled {
+  border-style: solid;
+  border-color: var(--color-positive-500, #7fb078);
+  background: var(--color-positive-200, #eff5ef);
+}
+
+.cv-dropzone__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cv-dropzone__icon {
+  width: 6.4rem;
+  height: 6.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-neutral-50, #fff);
+  border: 1px solid var(--color-neutral-300, #e8e8e8);
+  color: var(--color-brand-600, #383838);
+  box-shadow: 0 0.4rem 1.2rem -0.6rem rgb(20 20 20 / 25%);
+}
+
+.cv-dropzone__icon svg {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.cv-dropzone__text {
+  font-size: 1.6rem;
+  color: var(--color-neutral-800, #3d3d3d);
+}
+
+.cv-dropzone__text strong {
+  color: var(--color-brand-700, #2b2b2b);
+  font-weight: 700;
+}
+
+.cv-dropzone__hint {
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: var(--color-neutral-600, #8f8f8f);
+}
+
+.cv-dropzone__file {
+  display: none;
+  align-items: flex-start;
+  gap: 0.7rem;
+  max-width: 100%;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--color-positive-800, #53824c);
+}
+
+.cv-dropzone__file svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: 0.2rem;
+  flex: 0 0 auto;
+}
+
+.cv-dropzone__filename {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cv-dropzone.is-filled .cv-dropzone__file {
+  display: inline-flex;
+}
+
+.cv-dropzone.is-filled .cv-dropzone__hint {
+  display: none;
+}
+
+/* Primary button */
+.cv-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  align-self: flex-start;
+  padding: 1.4rem 2.6rem;
+  border: none;
+  border-radius: 1.1rem;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--color-brand-700, #2b2b2b);
+  color: var(--color-neutral-50, #fff);
+  box-shadow: 0 1rem 2rem -1.2rem rgb(20 20 20 / 70%);
+  transition: background 0.16s ease, transform 0.12s ease;
+}
+
+.cv-submit svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.cv-submit:hover:not(:disabled) {
+  background: var(--color-brand-600, #383838);
+  transform: translateY(-0.1rem);
+}
+
+.cv-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.cv-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.cv-submit.is-loading svg {
+  animation: cv-spin 1s linear infinite;
+}
+
+@keyframes cv-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cv-error {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-alert-800, #c35050);
+}
+
+.cv-note {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-neutral-700, #4a4a4a);
+}
+
+/* Guest email-OTP widget (checkout) */
+.cv-otp-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+.cv-input {
+  flex: 1 1 22rem;
+  min-width: 18rem;
+  padding: 1.1rem 1.3rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: var(--color-neutral-900, #1a1a1a);
+  background: var(--color-neutral-50, #fff);
+  border: 0.1rem solid var(--color-neutral-400, #c2c2c2);
+  border-radius: 0.8rem;
+}
+
+.cv-input:focus {
+  outline: none;
+  border-color: var(--color-brand-600, #0b5cad);
+  box-shadow: 0 0 0 0.2rem rgb(11 92 173 / 18%);
+}
+
+.cv-otp-row .cv-submit {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+/* PDP / checkout gate notice */
+.cv-gate-notice {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin: 1.4rem 0;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  font-weight: 500;
+  background: var(--color-warning-200, #fdf3e9);
+  border: 1px solid var(--color-warning-500, #e79f5c);
+  color: var(--color-warning-800, #cc7a2e);
+}
+
+.cv-gate-notice .cv-ico {
+  display: inline-flex;
+  color: var(--color-warning-800, #cc7a2e);
+}
+
+.cv-gate-link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  color: var(--color-brand-700, #2b2b2b);
+}
+
+.cv-gate-link:hover {
+  color: var(--color-brand-600, #383838);
+}
+
+@media (min-width: 600px) {
+  .cv-card {
+    padding: 3.2rem;
+  }
+}

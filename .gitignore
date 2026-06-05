@@ -1,0 +1,29 @@
+.hlx/*
+coverage/*
+logs/*
+node_modules
+.parcel-cache
+
+helix-importer-ui
+.DS_Store
+*.bak
+.idea
+# Ignore .map files in scripts/__dropins__/ directory and all its subdirectories
+scripts/__dropins__/**/*.map
+.env
+.env.*
+!.env.example
+
+# Cypress test run artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# Editor / OS
+.vscode/
+*.log
+Thumbs.db
+
+# Ensure these files are tracked
+!CLAUDE.md
+!AGENTS.md
